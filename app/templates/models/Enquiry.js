@@ -37,7 +37,7 @@ Enquiry.schema.post('save', function() {
 
 Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 	
-	var enqiury = this;
+	var enquiry = this;
 	
 	keystone.list('<%= userModel %>').model.find().where('isAdmin', true).exec(function(err, admins) {
 		
@@ -50,7 +50,7 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 				email: 'contact@<%= _.slugify(projectName) %>.com'
 			},
 			subject: 'New Enquiry for <%= projectName %>',
-			enquiry: enqiury
+			enquiry: enquiry
 		}, callback);
 		
 	});
